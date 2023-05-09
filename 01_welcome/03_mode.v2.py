@@ -1,4 +1,4 @@
-"""Maori Quiz -mode- v1
+"""Maori Quiz -mode- v2
 This is part of the menu which gives the player an option to pick the type
 of questions they want to be given
 Update: Added a while loop to continue to ask for an input until the player

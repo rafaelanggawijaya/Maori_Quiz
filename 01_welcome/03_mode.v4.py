@@ -1,4 +1,4 @@
-"""Maori Quiz -mode- v1
+"""Maori Quiz -mode- v4
 This is part of the menu which gives the player an option to pick the type
 of questions they want to be given
 Update: Added the ability to input one or two instead of just 1 and 2"""

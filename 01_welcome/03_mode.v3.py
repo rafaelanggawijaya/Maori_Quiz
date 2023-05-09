@@ -1,4 +1,4 @@
-"""Maori Quiz -mode- v1
+"""Maori Quiz -mode- v3
 This is part of the menu which gives the player an option to pick the type
 of questions they want to be given
 Update: changed the code into a function"""
