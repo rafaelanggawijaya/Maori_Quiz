@@ -4,11 +4,13 @@ of questions they want to be given
 Update: Added the ability to input one or two instead of just 1 and 2"""
 
 
+# function
+
 def mode_selection(modes):
     # while loop to keep asking question
     while True:
         # asks player for what mode to play on
-        answer = input(modes.lower())
+        answer = input(modes).lower()
         # mode 1 selection
         if answer == "1" or answer == "one":
             answer = 1

@@ -7,13 +7,17 @@ inputs a valid answer"""
 
 # asks question for difficulty
 difficulty = input("What difficulty do you want to play on?:").lower()
+# while loop to ask question again if player does not input a valid answer
 while difficulty != "x":
+    # when easy is selected
     if difficulty == "easy":
         print("Starting easy game")
         difficulty = "x"
+    # when hard is selected
     elif difficulty == "hard":
         print("Starting Hard game")
         difficulty = "x"
+    # if player enters an invalid intput
     else:
         print("<error> please enter a valid option (easy or hard)")
         difficulty = input("What difficulty do you want to play on?:").lower()

@@ -4,6 +4,8 @@ of questions they want to be given
 Update: changed the code into a function"""
 
 
+# function
+
 def mode_selection(modes):
     # while loop to keep asking question
     while True:

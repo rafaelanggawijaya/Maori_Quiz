@@ -5,8 +5,9 @@ hard"""
 
 # asks question for difficulty
 difficulty = input("What difficulty do you want to play on?:").lower()
-
+# when easy is selected
 if difficulty == "easy":
     print("Starting easy game")
 else:
+    # when hard is selected
     print("Starting Hard game")
