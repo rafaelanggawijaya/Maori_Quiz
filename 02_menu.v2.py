@@ -22,6 +22,7 @@ def mode_selection(modes):
         # error for unexpected inputs
         else:
             print("<error> please enter a valid option (1 or 2)")
+            input(modes).lower()
 
 
 # function for difficulty
@@ -41,6 +42,7 @@ def difficulty_level(level):
         # if player enters an invalid intput
         else:
             print("<error> please enter a valid option (easy or hard)")
+            answer = input(level).lower()
 
 
 # main routine
