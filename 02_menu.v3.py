@@ -2,7 +2,7 @@
 This part is after the welcome screen and instructions and gives the player
 options to choose a mode to play and a difficulty level which would
 determine questions given for the next component
-Update: Added subcomponents mode and difficulty functions"""
+Update: changed the two functions into a big function"""
 
 
 # function Menu
@@ -28,6 +28,7 @@ def menu(mode, difficulty):
     # while loop to ask question again if player does not input a valid answer
     answer_level = input(difficulty)
     while True:
+        # When easy is selected
         if answer_level == "easy":
             answer_level = "Easy"
             break
@@ -46,9 +47,6 @@ def menu(mode, difficulty):
 # main routine
 
 # calling function
-
-# makes sure shows mode string not number
-
 menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
               "days(enter 2)\n:"),
              "What difficulty do you want to play on?:")
