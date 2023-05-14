@@ -14,7 +14,7 @@ while True:
         break
     # when days is selected
     elif mode == "2":
-        "days"
+        mode = "Days"
         break
     # unexpected input
     else:

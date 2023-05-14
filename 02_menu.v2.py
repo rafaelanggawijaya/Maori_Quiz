@@ -7,10 +7,10 @@ Update: Added subcomponents mode and difficulty functions"""
 
 # function for mode selection
 def mode_selection(modes):
+    # asks player for what mode to play on
+    answer = input(modes).lower()
     # while loop to keep asking question
     while True:
-        # asks player for what mode to play on
-        answer = input(modes).lower()
         # mode 1 selection
         if answer == "1" or answer == "one":
             answer = 1
@@ -22,7 +22,7 @@ def mode_selection(modes):
         # error for unexpected inputs
         else:
             print("<error> please enter a valid option (1 or 2)")
-            input(modes).lower()
+            answer = input(modes).lower()
 
 
 # function for difficulty
