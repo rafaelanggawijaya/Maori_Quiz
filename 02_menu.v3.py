@@ -49,5 +49,5 @@ def menu(mode, difficulty):
 # calling function
 menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
               "days(enter 2)\n:"),
-             "What difficulty do you want to play on?:")
+             "What difficulty do you want to play on?(easy or hard):")
 print(f"Starting {menu_}")

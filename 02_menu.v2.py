@@ -51,7 +51,8 @@ print("***menu***\n")
 # calling function
 modes_ = mode_selection("What mode do you want\n1. numbers(enter 1)\n2. "
                         "days(enter 2)\n:")
-difficulty = difficulty_level("What difficulty do you want to play on?:")
+difficulty = difficulty_level("What difficulty do you want to play on?(easy "
+                              "or hard:")
 # makes sure shows mode string not number
 if modes_ == 1:
     modes_ = "Numbers"

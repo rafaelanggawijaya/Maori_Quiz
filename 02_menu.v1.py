@@ -31,8 +31,9 @@ while True:
         break
     # unexpected inputs
     else:
-        print("<error> please enter a valid option (1 or 2)")
-        mode = input("1. Maori numbers(enter 1)\n 1. Maori days(Enter 2)")
+        print("<error> please enter a valid option (easy or hard)")
+        level = input("What difficulty do you want to play on?(easy "
+                      "or hard):").lower()
 
 # main routine
 
