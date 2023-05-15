@@ -54,11 +54,13 @@ number = [["1", "tahi"], ["2", "rua"], ["3", "toru"], ["4", "wha"],
           ["5", "rima"],
           ["6", "ono"], ["7", "whitu"], ["8", "waru"], ["9", "iwa"], ["10",
                                                                       "tekau"]]
-day = [["Monday", ]]
+day = [["Monday", "Rahina"], ["Tuesday", "Ratu"], ["Wednesday", "Raapa"],
+       ["Thursday", "Rapare"], ["Friday", "Ramere"], ["Saturday", "Rahoroi"],
+       ["Sunday", "Ratapu"]]
 score = 0
 print(menu_)
-random.shuffle(number)
 if menu_ == "easy number":
+    random.shuffle(number)
     for i in number:
         answer = input(f"What is the maori word for {i[0]}\n>")
         if answer == i[1]:
@@ -67,5 +69,13 @@ if menu_ == "easy number":
         else:
             print("Wrong")
 elif menu_ == "easy day":
+    random.shuffle(day)
+    for i in day:
+        answer = input(f"What is the maori word for {i[0]}\n>").lower()
+        if answer == i[1].lower():
+            print("Correct")
+            score += 1
+        else:
+            print("Wrong")
 
 print(f"{score}/10")
