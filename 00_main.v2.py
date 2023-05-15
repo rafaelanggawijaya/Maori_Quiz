@@ -86,7 +86,7 @@ def menu(mode, difficulty):
         else:
             print("<error> please enter a valid option (easy or hard)")
             answer_level = input(difficulty)
-    total_answer = answer_level + " " + answer_mode
+    total_answer = answer_level + answer_mode
     return total_answer
 
 
