@@ -2,7 +2,7 @@
 This program is part of the menu and is after selecting which mode the
 player wants. It gives the player an option to pick a difficulty of easy or
 hard
-Update: Changed code into a function"""
+Changed: code is made for testing"""
 
 
 # function
@@ -26,6 +26,6 @@ def difficulty_level(level):
 
 
 # Main routine
-
-difficulty = difficulty_level("What difficulty do you want to play on?:")
-print(f"Starting {difficulty} game")
+while True:
+    difficulty = difficulty_level("What difficulty do you want to play on?:")
+    print(f"Starting {difficulty} game")

@@ -27,4 +27,8 @@ def mode_selection(modes):
 # main routine
 
 question = mode_selection("What mode do you want\n1. numbers\n2. days\n:")
+if question == 1:
+    question = "Numbers"
+else:
+    question = "Days"
 print(f"You chose option {question}")

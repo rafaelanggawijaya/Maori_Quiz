@@ -51,13 +51,13 @@ menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
               "days(enter 2)\n:"),
              "What difficulty do you want to play on?(easy or hard):")
 
-number = [["1", "tahi"], ["2", "rua"], ["3", "toru"], ["4", "wha"],
-          ["5", "rima"],
-          ["6", "ono"], ["7", "whitu"], ["8", "waru"], ["9", "iwa"], ["10",
-                                                                      "tekau"]]
-day = [["Monday", "Rahina"], ["Tuesday", "Ratu"], ["Wednesday", "Raapa"],
-       ["Thursday", "Rapare"], ["Friday", "Ramere"], ["Saturday", "Rahoroi"],
-       ["Sunday", "Ratapu"]]
+number_english = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                  ]
+number_maori = ["tahi", "rua", "toru", "wha", "rima","ono", "whitu", "waru",
+                "iwa", "tekau"]
+day_english = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+               "Saturday", "Sunday", ]
+day_maori = ["Rahina", "Ratu","Raapa", "Rapare", "Ramere", "Rahoroi", "Ratapu"]
 score = 0
 number_ = ""
 time_ = 0
@@ -69,17 +69,19 @@ time.sleep(1)
 print(1)
 start = time.time()
 if menu_ == "easy number":
-    random.shuffle(number)
-    for i in number:
-        answer = input(f"What is the maori word for {i[0]}\n>")
-        if answer == i[1]:
+    question = random.choice(number_english)
+    for i in number_english:
+        attempt = input(f"What is the maori word for {question}\n>")
+        answer_index = number_english.index(question)
+        answer = number_maori(answer_index)
+        if attempt == answer:
             print("Correct")
             score += 1
         else:
             print("Wrong")
 elif menu_ == "easy day":
     random.shuffle(day)
-    for i in day:
+    for i in day_english:
         answer = input(f"What is the maori word for {i[0]}\n>").lower()
         if answer == i[1].lower():
             print("Correct")

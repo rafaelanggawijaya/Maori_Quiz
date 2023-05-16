@@ -3,6 +3,8 @@ This part is after the welcome screen and instructions and gives the player
 options to choose a mode to play and a difficulty level which would
 determine questions given for the next component"""
 
+# main routine
+
 # tittle
 print("***menu***\n")
 # mode selection
@@ -34,7 +36,5 @@ while True:
         print("<error> please enter a valid option (easy or hard)")
         level = input("What difficulty do you want to play on?(easy "
                       "or hard):").lower()
-
-# main routine
 
 print(f"Starting {level} {mode}")
