@@ -2,7 +2,7 @@
 This part is after the welcome screen and instructions and gives the player
 options to choose a mode to play and a difficulty level which would
 determine questions given for the next component
-Update: changed the two functions into a big function"""
+Changed: changed the two functions into a big function"""
 
 
 # function Menu

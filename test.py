@@ -1,14 +1,4 @@
-print("hello world")
-no = "hard"
-ha = "Numbers"
-answer = no + ha
+import random
 
-
-
-
-
-
-
-
-
-
+number = random.randint(0, 1)
+print(number)
