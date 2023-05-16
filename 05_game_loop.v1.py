@@ -3,7 +3,7 @@ This program is what is responsible for the game mechanics and the question
 generating. It also gives a score and times the player"""
 
 import random
-
+import time
 
 # menu function
 def menu(mode, difficulty):
@@ -58,6 +58,7 @@ day = [["Monday", "Rahina"], ["Tuesday", "Ratu"], ["Wednesday", "Raapa"],
        ["Thursday", "Rapare"], ["Friday", "Ramere"], ["Saturday", "Rahoroi"],
        ["Sunday", "Ratapu"]]
 score = 0
+number_ = ""
 print(menu_)
 if menu_ == "easy number":
     random.shuffle(number)
@@ -73,6 +74,40 @@ elif menu_ == "easy day":
     for i in day:
         answer = input(f"What is the maori word for {i[0]}\n>").lower()
         if answer == i[1].lower():
+            print("Correct")
+            score += 1
+        else:
+            print("Wrong")
+elif menu_ == "hard number":
+    random.shuffle(number)
+    for i in number:
+        random_ = random.randint(0, 1)
+        if random_ == 0:
+            number_ = "maori"
+            correct = 1
+        else:
+            number_ = "english"
+            correct = 0
+        answer = input(f"What is the {number_} word for"
+                       f" {i[random_]}\n>").lower()
+        if answer == i[correct].lower():
+            print("Correct")
+            score += 1
+        else:
+            print("Wrong")
+elif menu_ == "hard day":
+    random.shuffle(day)
+    for i in day:
+        random_ = random.randint(0, 1)
+        if random_ == 0:
+            number_ = "maori"
+            correct = 1
+        else:
+            number_ = "english"
+            correct = 0
+        answer = input(f"What is the {number_} word for"
+                       f" {i[random_]}\n>").lower()
+        if answer == i[correct].lower():
             print("Correct")
             score += 1
         else:
