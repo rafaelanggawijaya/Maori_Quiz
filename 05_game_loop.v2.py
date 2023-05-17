@@ -49,87 +49,139 @@ def menu(mode, difficulty):
 
 # main routine
 
+# calls menu function
 menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
               "days(enter 2)\n:"),
              "What difficulty do you want to play on?(easy or hard):")
-
+# english number list can be an answer or question depending on difficulty and
+# random generator
 number_english = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+# maori number list can be an answer or question depending on difficulty and
+# random generator
 number_maori = ["tahi", "rua", "toru", "wha", "rima", "ono", "whitu", "waru",
                 "iwa", "tekau"]
+# english day list can be an answer or question depending on difficulty and
+# random generator
 day_english = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
                "Saturday", "Sunday"]
+# maori day list can be an answer or question depending on difficulty and
+# random generator
 day_maori = ["Rahina", "Ratu", "Raapa", "Rapare", "Ramere", "Rahoroi",
              "Ratapu"]
+# sets score
 score = 0
-number_ = ""
+# sets time
 time_ = 0
+# starts countdown
 print("\nStarting in :\n3")
 time.sleep(1)
 print(2)
 time.sleep(1)
 print(1)
+# starts timer
 start = time.time()
+# starts game loop for certain modes and difficulty
 if menu_ == "easy number":
     for i in number_english:
+        # question generator
         question = random.choice(number_english)
+        # question
         attempt = input(f"What is the maori word for {question}\n>")
+        # sets answer
         answer_index = number_english.index(question)
         answer = number_maori[answer_index]
+        # checks answer if correct or incorrect
         if attempt == answer:
             print("Correct")
+            # increases score
             score += 1
         else:
             print("Wrong")
 elif menu_ == "easy day":
     for i in day_english:
+        # question generator
         question = random.choice(day_english)
+        # question
         attempt = input(f"What is the maori word for {question}\n>")
+        # sets answer
         answer_index = day_english.index(question)
         answer = day_maori[answer_index]
+        # checks answer if correct or incorrect
         if answer == i[1].lower():
             print("Correct")
+            # increases score
             score += 1
         else:
             print("Wrong")
 elif menu_ == "hard number":
-    for i in number_maori and number_english:
+    for i in range(1, 11):
+        # generates a number to pick between maori and english
         random_ = random.randint(0, 1)
         if random_ == 0:
-            number_ = "maori"
+            # question generator
             question = random.choice(number_english)
+            # question
             attempt = input(f"What is the maori word for {question}\n>")
+            # sets answer
             answer_index = number_english.index(question)
             answer = number_maori[answer_index]
+            # removes question and answer so it won't be repeated
+            number_maori.append(question)
+            number_english.append(answer)
         else:
-            number_ = "english"
-            question = random.choice(number_english)
-            attempt = input(f"What is the {number_} word for {question}\n>")
+            # question generator
+            question = random.choice(number_maori)
+            # question
+            attempt = input(f"What is the english word for {question}\n>")
+            # sets answer
             answer_index = number_maori.index(question)
             answer = number_english[answer_index]
-
-        if answer == :
+            # removes question and answer so it won't be repeated
+            number_maori.append(answer)
+            number_english.append(question)
+        # checks answer if correct or incorrect
+        if attempt == answer:
             print("Correct")
+            # increases score
             score += 1
         else:
             print("Wrong")
 elif menu_ == "hard day":
-    random.shuffle(day)
-    for i in day:
+    for i in range(1, 11):
         random_ = random.randint(0, 1)
         if random_ == 0:
-            number_ = "maori"
-            correct = 1
+            # question generator
+            question = random.choice(day_english)
+            # question
+            attempt = input(f"What is the maori word "
+                            f"for {question}\n>").lower()
+            # sets answer
+            answer_index = day_english.index(question)
+            answer = day_maori[answer_index]
+            # removes question and answer so it won't be repeated
+            day_maori.append(answer)
+            day_english.append(question)
         else:
-            number_ = "english"
-            correct = 0
-        answer = input(f"What is the {number_} word for"
-                       f" {i[random_]}\n>").lower()
-        if answer == i[correct].lower():
+            # question generator
+            question = random.choice(day_maori)
+            # question
+            attempt = input(f"What is the english word "
+                            f"for {question}\n>").lower()
+            # sets answer
+            answer_index = day_maori.index(question)
+            answer = day_english[answer_index]
+            # removes question and answer so it won't be repeated
+            day_maori.append(question)
+            day_english.append(answer)
+        # checks answer if correct or incorrect
+        if attempt == answer:
             print("Correct")
+            # increases score
             score += 1
         else:
             print("Wrong")
 
+# simple version of results to end timer and score
 end = time.time()
 time_ = end - start
 print(f"{score}/10")
