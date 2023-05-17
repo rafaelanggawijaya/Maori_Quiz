@@ -1,6 +1,8 @@
-"""Maori Quiz -game loop- v1
+"""Maori Quiz -game loop- v2
 This program is what is responsible for the game mechanics and the question
-generating. It also gives a score and times the player"""
+generating. Easy is straight forward only asking the maori names while hard
+chooses between the two asking for english translation of maori words and
+vis versa  It also gives a score and times the player"""
 
 import random
 import time
@@ -90,18 +92,22 @@ elif menu_ == "easy day":
         else:
             print("Wrong")
 elif menu_ == "hard number":
-    random.shuffle(number)
-    for i in number:
+    for i in number_maori and number_english:
         random_ = random.randint(0, 1)
         if random_ == 0:
             number_ = "maori"
-            correct = 1
+            question = random.choice(number_english)
+            attempt = input(f"What is the maori word for {question}\n>")
+            answer_index = number_english.index(question)
+            answer = number_maori[answer_index]
         else:
             number_ = "english"
-            correct = 0
-        answer = input(f"What is the {number_} word for"
-                       f" {i[random_]}\n>").lower()
-        if answer == i[correct].lower():
+            question = random.choice(number_english)
+            attempt = input(f"What is the {number_} word for {question}\n>")
+            answer_index = number_maori.index(question)
+            answer = number_english[answer_index]
+
+        if answer == :
             print("Correct")
             score += 1
         else:
