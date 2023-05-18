@@ -70,6 +70,7 @@ day_maori = ["Rahina", "Ratu", "Raapa", "Rapare", "Ramere", "Rahoroi",
              "Ratapu"]
 # sets score
 score = 0
+scored = ""
 # sets time
 time_ = 0
 # starts countdown
@@ -82,6 +83,8 @@ print(1)
 start = time.time()
 # starts game loop for certain modes and difficulty
 if menu_ == "easy number":
+    # tells program what to score the player at the end out of
+    scored = 10
     for i in number_english:
         # question generator
         question = random.choice(number_english)
@@ -98,6 +101,8 @@ if menu_ == "easy number":
         else:
             print("Wrong")
 elif menu_ == "easy day":
+    # tells program what to score the player at the end out of
+    scored = 7
     for i in day_english:
         # question generator
         question = random.choice(day_english)
@@ -114,6 +119,8 @@ elif menu_ == "easy day":
         else:
             print("Wrong")
 elif menu_ == "hard number":
+    # tells program what to score the player at the end out of
+    scored = 10
     for i in range(1, 11):
         # generates a number to pick between maori and english
         random_ = random.randint(0, 1)
@@ -125,9 +132,8 @@ elif menu_ == "hard number":
             # sets answer
             answer_index = number_english.index(question)
             answer = number_maori[answer_index]
-            # removes question and answer so it won't be repeated
-            number_maori.append(question)
-            number_english.append(answer)
+            # tells code what to remove
+            remove_ = 1
         else:
             # question generator
             question = random.choice(number_maori)
@@ -136,9 +142,8 @@ elif menu_ == "hard number":
             # sets answer
             answer_index = number_maori.index(question)
             answer = number_english[answer_index]
-            # removes question and answer so it won't be repeated
-            number_maori.append(answer)
-            number_english.append(question)
+            # tells code what to remove
+            remove_ = 2
         # checks answer if correct or incorrect
         if attempt == answer:
             print("Correct")
@@ -146,8 +151,17 @@ elif menu_ == "hard number":
             score += 1
         else:
             print("Wrong")
+        # removes question and answer so it won't be repeated
+        if remove_ == 1:
+            number_maori.remove(answer)
+            number_english.remove(question)
+        else:
+            number_maori.remove(question)
+            number_english.remove(answer)
 elif menu_ == "hard day":
-    for i in range(1, 11):
+    # tells program what to score the player at the end out of
+    scored = 7
+    for i in range(1, 8):
         random_ = random.randint(0, 1)
         if random_ == 0:
             # question generator
@@ -158,9 +172,8 @@ elif menu_ == "hard day":
             # sets answer
             answer_index = day_english.index(question)
             answer = day_maori[answer_index]
-            # removes question and answer so it won't be repeated
-            day_maori.append(answer)
-            day_english.append(question)
+            # tells code what to remove
+            remove_ = 1
         else:
             # question generator
             question = random.choice(day_maori)
@@ -170,9 +183,8 @@ elif menu_ == "hard day":
             # sets answer
             answer_index = day_maori.index(question)
             answer = day_english[answer_index]
-            # removes question and answer so it won't be repeated
-            day_maori.append(question)
-            day_english.append(answer)
+            # tells code what to remove
+            remove_ = 2
         # checks answer if correct or incorrect
         if attempt == answer:
             print("Correct")
@@ -180,9 +192,16 @@ elif menu_ == "hard day":
             score += 1
         else:
             print("Wrong")
+        # removes question and answer so it won't be repeated
+        if remove_ == 1:
+            day_maori.remove(answer)
+            day_english.remove(question)
+        else:
+            day_maori.remove(question)
+            day_english.remove(answer)
 
 # simple version of results to end timer and score
 end = time.time()
 time_ = end - start
-print(f"{score}/10")
+print(f"{score}/{scored}")
 print(f"Your time = {time_:.2f} seconds")
