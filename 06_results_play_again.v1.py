@@ -7,17 +7,17 @@ want to play again"""
 
 def yes_no(question_text):
     while True:
-        # ask player input - (if they need instructions)
+        # ask player input - (if they want to play again)
 
         answer = input(question_text).lower()
 
-        # if player input == yes or y output - (Instructions)
+        # if player input == yes or y output - (menu)
 
         if answer == "y" or answer == "yes":
             answer = "yes"
             return answer
 
-        # if player input == no or n output - ('Display menu')
+        # if player input == no or n output - (Goodbye screen)
         elif answer == "n" or answer == "no":
             answer = "no"
             return answer
