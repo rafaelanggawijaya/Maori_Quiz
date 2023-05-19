@@ -205,6 +205,7 @@ def game_loop():
     results = [time_, score, scored]
     return results
 
+
 # main routine
 
 # simple version of results to end timer and score
