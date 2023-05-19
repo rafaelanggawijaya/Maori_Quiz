@@ -2,8 +2,7 @@
 A program that tests players knowledge on maori language.
 10 questions and a hard or easy difficulty. It is timed to encourage the
 player to practice and get better times.
-Update: Added component 2 menu function
-instructions
+Update: Added component 2 instructions and component 3 menu function
 By Rafael Anggawijaya"""
 
 
