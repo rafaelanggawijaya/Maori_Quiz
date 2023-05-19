@@ -63,11 +63,11 @@ def menu(mode, difficulty):
         # asks player for what mode to play on
         # mode 1 selection
         if answer_mode == "1" or answer_mode == "one":
-            answer_mode = "Numbers"
+            answer_mode = "number"
             break
             # mode 2 selection
         elif answer_mode == "2" or answer_mode == "two":
-            answer_mode = "Days"
+            answer_mode = "day"
             break
             # error for unexpected inputs
         else:
@@ -78,27 +78,24 @@ def menu(mode, difficulty):
     while True:
         # When easy is selected
         if answer_level == "easy" or answer_level == "e":
-            answer_level = "Easy"
+            answer_level = "easy"
             break
         # when hard is selected
         elif answer_level == "hard" or answer_level == "h":
-            answer_level = "Hard"
+            answer_level = "hard"
             break
         # if player enters an invalid intput
         else:
             print("<error> please enter a valid option (easy or hard)")
             answer_level = input(difficulty)
-    total_answer = answer_level + answer_mode
+    total_answer = str(answer_level + " " + answer_mode)
     return total_answer
 
 
 # Game loop function
-def game_loop():
+def game_loop(mode_difficulty):
     # calls menu function
 
-    menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
-                  "days(enter 2)\n:"),
-                 "What difficulty do you want to play on?(easy or hard):")
     # english number list can be an answer or question depending on difficulty
     # and random generator
     number_english = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
@@ -127,7 +124,7 @@ def game_loop():
     # starts timer
     start = time.time()
     # starts game loop for certain modes and difficulty
-    if menu_ == "easy number":
+    if mode_difficulty == "easy number":
         # tells program what to score the player at the end out of
         scored = 10
         for scored in number_english:
@@ -145,7 +142,7 @@ def game_loop():
                 score += 1
             else:
                 print("Wrong")
-    elif menu_ == "easy day":
+    elif mode_difficulty == "easy day":
         # tells program what to score the player at the end out of
         scored = 7
         for scored in day_english:
@@ -163,7 +160,7 @@ def game_loop():
                 score += 1
             else:
                 print("Wrong")
-    elif menu_ == "hard number":
+    elif mode_difficulty == "hard number":
         # tells program what to score the player at the end out of
         scored = 10
         for i in range(1, 11):
@@ -203,7 +200,7 @@ def game_loop():
             else:
                 number_maori.remove(question)
                 number_english.remove(answer)
-    elif menu_ == "hard day":
+    elif mode_difficulty == "hard day":
         # tells program what to score the player at the end out of
         scored = 7
         for i in range(1, 8):
@@ -272,4 +269,4 @@ else:
                   "days(enter 2)\n:"),
                  "What difficulty do you want to play on?(easy or hard):")
 
-game_loop()
+game_loop(menu_)
