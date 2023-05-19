@@ -48,7 +48,7 @@ def menu(mode, difficulty):
     return total_answer
 
 
-# main routine
+# Game loop function
 def game_loop():
     # calls menu function
 
@@ -72,9 +72,8 @@ def game_loop():
                  "Ratapu"]
     # sets score
     score = 0
-    scored = ""
-    # sets time
-    time_ = 0
+    # sets what to score out of to 0
+    scored = 0
     # starts countdown
     print("\nStarting in :\n3")
     time.sleep(1)
@@ -87,7 +86,7 @@ def game_loop():
     if menu_ == "easy number":
         # tells program what to score the player at the end out of
         scored = 10
-        for i in number_english:
+        for scored in number_english:
             # question generator
             question = random.choice(number_english)
             # question
@@ -105,7 +104,7 @@ def game_loop():
     elif menu_ == "easy day":
         # tells program what to score the player at the end out of
         scored = 7
-        for i in day_english:
+        for scored in day_english:
             # question generator
             question = random.choice(day_english)
             # question
@@ -203,10 +202,13 @@ def game_loop():
                 day_english.remove(answer)
     end = time.time()
     time_ = end - start
-    return time_
+    results = [time_, score, scored]
+    return results
+
+# main routine
 
 # simple version of results to end timer and score
 
-game_loop()
-print(f"{score}/{scored}")
-print(f"Your time = {time_:.2f} seconds")
+results_ = game_loop()
+print(f"{results_[1]}/{results_[2]}")
+print(f"Your time = {results_[0]:.2f} seconds")
