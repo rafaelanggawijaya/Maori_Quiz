@@ -49,12 +49,9 @@ def menu(mode, difficulty):
 
 
 # Game loop function
-def game_loop():
+def game_loop(mode_difficulty):
     # calls menu function
 
-    menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
-                  "days(enter 2)\n:"),
-                 "What difficulty do you want to play on?(easy or hard):")
     # english number list can be an answer or question depending on difficulty
     # and random generator
     number_english = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
@@ -83,7 +80,7 @@ def game_loop():
     # starts timer
     start = time.time()
     # starts game loop for certain modes and difficulty
-    if menu_ == "easy number":
+    if mode_difficulty == "easy number":
         # tells program what to score the player at the end out of
         scored = 10
         for scored in number_english:
@@ -101,7 +98,7 @@ def game_loop():
                 score += 1
             else:
                 print("Wrong")
-    elif menu_ == "easy day":
+    elif mode_difficulty == "easy day":
         # tells program what to score the player at the end out of
         scored = 7
         for scored in day_english:
@@ -119,7 +116,7 @@ def game_loop():
                 score += 1
             else:
                 print("Wrong")
-    elif menu_ == "hard number":
+    elif mode_difficulty == "hard number":
         # tells program what to score the player at the end out of
         scored = 10
         for i in range(1, 11):
@@ -159,7 +156,7 @@ def game_loop():
             else:
                 number_maori.remove(question)
                 number_english.remove(answer)
-    elif menu_ == "hard day":
+    elif mode_difficulty == "hard day":
         # tells program what to score the player at the end out of
         scored = 7
         for i in range(1, 8):
@@ -209,7 +206,9 @@ def game_loop():
 # main routine
 
 # simple version of results to end timer and score
-
-results_ = game_loop()
+menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
+              "days(enter 2)\n:"),
+             "What difficulty do you want to play on?(easy or hard):")
+results_ = game_loop(menu_)
 print(f"{results_[1]}/{results_[2]}")
 print(f"Your time = {results_[0]:.2f} seconds")
