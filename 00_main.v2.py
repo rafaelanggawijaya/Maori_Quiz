@@ -1,4 +1,4 @@
-"""Maori Quiz v1
+"""Maori Quiz v2
 A program that tests players knowledge on maori language.
 10 questions and a hard or easy difficulty. It is timed to encourage the
 player to practice and get better times.
