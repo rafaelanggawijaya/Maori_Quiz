@@ -1,10 +1,56 @@
-"""Maori Quiz -game loop- v3
-This part shows the results after the game it also asks the player if they
-want to play again
-Update: added menu and game loop function to test if it can work together"""
+"""Maori Quiz v3
+A program that tests players knowledge on maori language.
+10 questions and a hard or easy difficulty. It is timed to encourage the
+player to practice and get better times.
+Update: Added component 4 results/play again function
+By Rafael Anggawijaya"""
 
 import random
 import time
+
+
+# Functions for a text formatter (From Lucky Unicorn pre-assessment)
+def text_formatter(symbol_1, side_symbol, symbol_2, text):
+    sides = side_symbol * 3
+    formatted_text = f"{sides}{text}{sides}"
+    top = symbol_1 * len(formatted_text)
+    bottom = symbol_2 * len(formatted_text)
+
+    return f"{top}\n{formatted_text}\n{bottom}"
+
+
+# Function for a yes no checker (From Lucky Unicorn pre-assessment)
+def yes_no(question_text):
+    while True:
+        # ask player input - (if they need instructions)
+
+        answer_ = input(question_text).lower()
+
+        # if player input == yes or y output - (Instructions)
+
+        if answer_ == "y" or answer_ == "yes":
+            answer_ = "yes"
+            return answer_
+
+        # if player input == no or n output - ('Display menu')
+        elif answer_ == "n" or answer_ == "no":
+            answer_ = "no"
+            return answer_
+
+        # otherwise output - (error)
+        else:
+            print("error -invalid input- (please enter yes/no or y/n)")
+
+
+# Function instructions (From Lucky Unicorn pre-assessment)
+
+def instructions():
+    print("***How To Play***")
+    print()
+    print("The rules of the game go here")
+    print()
+    print()
+    print()
 
 
 # menu function
@@ -232,24 +278,50 @@ def results_play_again(time_, score_, scored_, question_text):
             print("error -invalid input- (please enter yes/no or y/n)")
 
 
-# main routine
+# Main routine
 
-# call menu function
-menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
-              "days(enter 2)\n:"),
-             "What difficulty do you want to play on?(easy or hard):")
-# call game loop function
-game = game_loop(menu_)
+# Welcome screen
+print(text_formatter("-", "", "-", "Welcome To Maori Quiz"))
 
-# call result/play again function
-play_again = results_play_again(game[0], game[1], game[2], "Do you want to "
-                                                           "play again?:")
-# what happens when player chooses to play or not play again
-if play_again == "yes":
-    # when player picks want to play again (Go back to menu)
+# Asks player if they need instructions
+instructions_ = yes_no("Do you need Instructions? (enter y or n): ")
+# Gives instructions  then menu when the answer is yes or just menu when no
+
+if instructions_ == "yes":
+    # calls instruction function
+    instructions()
+    # calls menu function
     menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
                   "days(enter 2)\n:"),
                  "What difficulty do you want to play on?(easy or hard):")
 else:
-    # when player wants to stop playing (Goes to goodbye screen)
-    print("Goodbye screen")
+    # calls menu function
+    menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
+                  "days(enter 2)\n:"),
+                 "What difficulty do you want to play on?(easy or hard):")
+
+# calls game_loop function
+game = game_loop(menu_)
+
+# calls result/play again function
+play_again = results_play_again(game[0], game[1], game[2], "Do you want to "
+                                                           "play again?:")
+# what happens when player chooses to play or not play again
+while play_again != "no":
+    if play_again == "yes":
+        # when player picks want to play again (Go back to menu)
+        menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
+                      "days(enter 2)\n:"),
+                     "What difficulty do you want to play on?(easy or hard):")
+        # calls game_loop function
+        game = game_loop(menu_)
+        # calls result/play again function
+        play_again = results_play_again(game[0], game[1], game[2],
+                                        "Do you want to "
+                                        "play again?:")
+    else:
+        # when player wants to stop playing (Goes to goodbye screen)
+        break
+
+# placeholder for goodbye screen
+print("Goodbye screen")
