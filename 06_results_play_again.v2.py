@@ -14,7 +14,7 @@ def results_play_again(time, score, scored, question_text):
     # What to score out of input (for testing purposes what be received from
     # game loop)
     out_of = scored
-    print(f"You got {score}/{out_of}\nIt took you {player_time} seconds")
+    print(f"You got {score}/{out_of}\nIt took you {player_time:.2f} seconds")
     while True:
         # ask player input - (if they want to play again)
 
@@ -43,10 +43,11 @@ def results_play_again(time, score, scored, question_text):
 # main routine
 
 # time input (for testing purposes what be received from game loop)
-time_ = input("time:")
+time_ = float(input("time:"))
 # score input (for testing purposes what be received from game loop)
 score_ = input("score:")
 # What to score out of input (for testing purposes what be received from game
 # loop)
 scored_ = input("out of:")
-results_play_again(time_, score_, scored_, "Do you want to play again?:")
+print(results_play_again(time_, score_, scored_, "Do you want to play "
+                                                 "again?:"))
