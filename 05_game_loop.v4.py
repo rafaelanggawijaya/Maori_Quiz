@@ -100,7 +100,7 @@ def game_loop(mode_difficulty):
             else:
                 print("Wrong")
                 # removes question and answer so it won't be repeated
-                number_english.remove(question)
+            number_english.remove(question)
     elif mode_difficulty == "easy day":
         # tells program what to score the player at the end out of
         scored = 7
@@ -120,7 +120,7 @@ def game_loop(mode_difficulty):
             else:
                 print("Wrong")
                 # removes question and answer so it won't be repeated
-                day_english.remove(question)
+            day_english.remove(question)
     elif mode_difficulty == "hard number":
         # tells program what to score the player at the end out of
         scored = 10
