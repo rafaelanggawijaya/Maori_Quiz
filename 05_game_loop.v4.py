@@ -100,6 +100,7 @@ def game_loop(mode_difficulty):
             else:
                 print("Wrong")
                 # removes question and answer so it won't be repeated
+            number_maori.remove(answer)
             number_english.remove(question)
     elif mode_difficulty == "easy day":
         # tells program what to score the player at the end out of
@@ -108,7 +109,8 @@ def game_loop(mode_difficulty):
             # question generator
             question = random.choice(day_english)
             # question
-            attempt = input(f"What is the maori word for {question}\n>")
+            attempt = input(f"What is the maori word for "
+                            f"{question}\n>")
             # sets answer
             answer_index = day_english.index(question)
             answer = day_maori[answer_index]
@@ -120,6 +122,7 @@ def game_loop(mode_difficulty):
             else:
                 print("Wrong")
                 # removes question and answer so it won't be repeated
+            day_maori.remove(answer)
             day_english.remove(question)
     elif mode_difficulty == "hard number":
         # tells program what to score the player at the end out of
@@ -171,7 +174,7 @@ def game_loop(mode_difficulty):
                 question = random.choice(day_english)
                 # question
                 attempt = input(f"What is the maori word "
-                                f"for {question}\n>").lower()
+                                f"for {question}\n>")
                 # sets answer
                 answer_index = day_english.index(question)
                 answer = day_maori[answer_index]
@@ -182,7 +185,7 @@ def game_loop(mode_difficulty):
                 question = random.choice(day_maori)
                 # question
                 attempt = input(f"What is the english word "
-                                f"for {question}\n>").lower()
+                                f"for {question}\n>")
                 # sets answer
                 answer_index = day_maori.index(question)
                 answer = day_english[answer_index]
