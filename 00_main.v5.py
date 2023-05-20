@@ -1,8 +1,8 @@
-"""Maori Quiz v3
+"""Maori Quiz v5
 A program that tests players knowledge on maori language.
 10 questions and a hard or easy difficulty. It is timed to encourage the
 player to practice and get better times.
-Update: Added component 4 results/play again function
+Update: finished off instructions function and goodbye text/credits
 By Rafael Anggawijaya"""
 
 import random

@@ -1,19 +1,68 @@
-"""Maori Quiz -game loop- v4
-This program is what is responsible for the game mechanics and the question
-generating. Easy is straight forward only asking the maori names while hard
-chooses between the two asking for english translation of maori words and
-vis versa  It also gives a score and times the player
-Update: Fixed problem found by play testers that questions on easy mode
-would repeat"""
+"""Maori Quiz v6
+A program that tests players knowledge on maori language.
+10 questions and a hard or easy difficulty. It is timed to encourage the
+player to practice and get better times.
+Update: replacing game loop function with a fixed version
+By Rafael Anggawijaya"""
 
 import random
 import time
 
 
+# Functions for a text formatter (From Lucky Unicorn pre-assessment)
+def text_formatter(symbol_1, side_symbol, symbol_2, text):
+    sides = side_symbol * 3
+    formatted_text = f"{sides}{text}{sides}"
+    top = symbol_1 * len(formatted_text)
+    bottom = symbol_2 * len(formatted_text)
+
+    return f"{top}\n{formatted_text}\n{bottom}"
+
+
+# Function for a yes no checker (From Lucky Unicorn pre-assessment)
+def yes_no(question_text):
+    while True:
+        # ask player input - (if they need instructions)
+
+        answer_ = input(question_text).lower()
+
+        # if player input == yes or y output - (Instructions)
+
+        if answer_ == "y" or answer_ == "yes":
+            answer_ = "yes"
+            return answer_
+
+        # if player input == no or n output - ('Display menu')
+        elif answer_ == "n" or answer_ == "no":
+            answer_ = "no"
+            return answer_
+
+        # otherwise output - (error)
+        else:
+            print("error -invalid input- (please enter yes/no or y/n)")
+
+
+# Function instructions (From Lucky Unicorn pre-assessment)
+
+def instructions():
+    print("\n***How To Play***")
+    print()
+    print("Maori Quiz is a game that test your knowledge on Maori numbers "
+          "and days\nTo start in the menu enter the mode you want to play "
+          "number or days\nThen you pick your difficulty, hard or easy\n"
+          "Easy mode only asks english to maori\nHard mode asks both english "
+          "to maori and maori to english\nEach round asks you 10 questions "
+          "no matter what difficulty and it will also time you\nTry to beat "
+          "your score and time\nWhen entering numbers use integers(e.g. 1, "
+          "2, 3,) not strings(e.g. one, two, three) and you don't need to "
+          "mac"
+          "\nThat's pretty much it so good luck ")
+
+
 # menu function
 def menu(mode, difficulty):
     # tittle/ decoration
-    print("***menu***\n")
+    print("\n***menu***\n")
     # while loop to keep asking question
     answer_mode = input(mode)
     while True:
@@ -208,12 +257,89 @@ def game_loop(mode_difficulty):
     return results
 
 
-# main routine
+# results_play_again function
 
-# simple version of results to end timer and score
-menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
-              "days(enter 2)\n:"),
-             "What difficulty do you want to play on?(easy or hard):")
-results_ = game_loop(menu_)
-print(f"{results_[1]}/{results_[2]}")
-print(f"Your time = {results_[0]:.2f} seconds")
+def results_play_again(time_, score_, scored_, question_text):
+    # time input (for testing purposes what be received from game loop)
+    player_time = time_
+    # score input (for testing purposes what be received from game loop)
+    score = score_
+    # What to score out of input (for testing purposes what be received from
+    # game loop)
+    out_of = scored_
+    print(f"\nYou got {score}/{out_of}\nIt took you {player_time:.2f} seconds")
+    while True:
+        # ask player input - (if they need instructions)
+
+        answer = input(question_text).lower()
+
+        # if player input == yes or y output - (Instructions)
+
+        if answer == "y" or answer == "yes":
+            answer = "yes"
+            return answer
+
+        # if player input == no or n output - ('Display menu')
+        elif answer == "n" or answer == "no":
+            answer = "no"
+            return answer
+            # otherwise output - (error)
+        else:
+            print("error -invalid input- (please enter yes/no or y/n)")
+
+
+# Main routine
+
+# Welcome screen
+print(text_formatter("-", "", "-", "Welcome To Maori Quiz"))
+
+# Asks player if they need instructions
+instructions_ = yes_no("Do you need Instructions? (enter y or n):")
+# Gives instructions  then menu when the answer is yes or just menu when no
+
+if instructions_ == "yes":
+    # calls instruction function
+    instructions()
+    # gives time for player to read instructions
+    time.sleep(10)
+    # calls menu function
+    menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
+                  "days(enter 2)\n:"),
+                 "What difficulty do you want to play on?(easy or hard):")
+else:
+    # calls menu function
+    menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
+                  "days(enter 2)\n:"),
+                 "What difficulty do you want to play on?(easy or hard):")
+
+# calls game_loop function
+game = game_loop(menu_)
+
+# calls result/play again function
+play_again = results_play_again(game[0], game[1], game[2], "Do you want to "
+                                                           "play again?:")
+# what happens when player chooses to play or not play again
+while play_again != "no":
+    if play_again == "yes":
+        # when player picks want to play again (Go back to menu)
+        menu_ = menu(("What mode do you want\n1. numbers(enter 1)\n2. "
+                      "days(enter 2)\n:"),
+                     "What difficulty do you want to play on?(easy or hard):")
+        # calls game_loop function
+        game = game_loop(menu_)
+        # calls result/play again function
+        play_again = results_play_again(game[0], game[1], game[2],
+                                        "Do you want to "
+                                        "play again?:")
+    else:
+        # when player wants to stop playing (Goes to goodbye screen)
+        break
+
+# Goodbye screen
+print("\nMaori Quiz By Rafael Anggawijaya\nThanks to:\nProfessor Samuel Lee "
+      "and chief Hongi Hika who created and systematise the written maori "
+      "language\nMr Baker for teaching me how to program :)\nMy Dad, My "
+      "sister and Yuu my friend for play testing the game.\nAnd to you the "
+      "player who is "
+      "playing this game!\n")
+print(text_formatter("-", "", "-", "Thanks for playing!"))
