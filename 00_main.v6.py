@@ -2,7 +2,7 @@
 A program that tests players knowledge on maori language.
 10 questions and a hard or easy difficulty. It is timed to encourage the
 player to practice and get better times.
-Update: replacing game loop function with a fixed version
+Update: replacing game loop function with a fixed version and decorating text
 By Rafael Anggawijaya"""
 
 import random
@@ -137,19 +137,20 @@ def game_loop(mode_difficulty):
             # question generator
             question = random.choice(number_english)
             # question
-            attempt = input(f"What is the maori word for {question}\n>")
+            attempt = input(f"What is the maori word for {question}\n==>")
             # sets answer
             answer_index = number_english.index(question)
             answer = number_maori[answer_index]
             # checks answer if correct or incorrect
             if attempt == answer:
-                print("Correct")
+                print("\nCorrect!!!\n")
                 # increases score
                 score += 1
             else:
-                print("Wrong")
+                print("\n*Wrong*\n")
                 # removes question and answer so it won't be repeated
-                number_english.remove(question)
+            number_maori.remove(answer)
+            number_english.remove(question)
     elif mode_difficulty == "easy day":
         # tells program what to score the player at the end out of
         scored = 7
@@ -157,19 +158,21 @@ def game_loop(mode_difficulty):
             # question generator
             question = random.choice(day_english)
             # question
-            attempt = input(f"What is the maori word for {question}\n>")
+            attempt = input(f"What is the maori word for "
+                            f"{question}\n==>")
             # sets answer
             answer_index = day_english.index(question)
             answer = day_maori[answer_index]
             # checks answer if correct or incorrect
             if attempt == answer:
-                print("Correct")
+                print("\nCorrect!!!\n")
                 # increases score
                 score += 1
             else:
-                print("Wrong")
+                print("\n*Wrong*\n")
                 # removes question and answer so it won't be repeated
-                day_english.remove(question)
+            day_maori.remove(answer)
+            day_english.remove(question)
     elif mode_difficulty == "hard number":
         # tells program what to score the player at the end out of
         scored = 10
@@ -180,7 +183,7 @@ def game_loop(mode_difficulty):
                 # question generator
                 question = random.choice(number_english)
                 # question
-                attempt = input(f"What is the maori word for {question}\n>")
+                attempt = input(f"What is the maori word for {question}\n==>")
                 # sets answer
                 answer_index = number_english.index(question)
                 answer = number_maori[answer_index]
@@ -190,7 +193,8 @@ def game_loop(mode_difficulty):
                 # question generator
                 question = random.choice(number_maori)
                 # question
-                attempt = input(f"What is the english word for {question}\n>")
+                attempt = input(f"What is the english word for "
+                                f"{question}\n==>")
                 # sets answer
                 answer_index = number_maori.index(question)
                 answer = number_english[answer_index]
@@ -198,11 +202,11 @@ def game_loop(mode_difficulty):
                 remove_ = 2
             # checks answer if correct or incorrect
             if attempt == answer:
-                print("Correct")
+                print("\nCorrect!!!\n")
                 # increases score
                 score += 1
             else:
-                print("Wrong")
+                print("\n*Wrong*\n")
             # removes question and answer so it won't be repeated
             if remove_ == 1:
                 number_maori.remove(answer)
@@ -220,7 +224,7 @@ def game_loop(mode_difficulty):
                 question = random.choice(day_english)
                 # question
                 attempt = input(f"What is the maori word "
-                                f"for {question}\n>").lower()
+                                f"for {question}\n==>")
                 # sets answer
                 answer_index = day_english.index(question)
                 answer = day_maori[answer_index]
@@ -231,7 +235,7 @@ def game_loop(mode_difficulty):
                 question = random.choice(day_maori)
                 # question
                 attempt = input(f"What is the english word "
-                                f"for {question}\n>").lower()
+                                f"for {question}\n==>")
                 # sets answer
                 answer_index = day_maori.index(question)
                 answer = day_english[answer_index]
@@ -239,11 +243,11 @@ def game_loop(mode_difficulty):
                 remove_ = 2
             # checks answer if correct or incorrect
             if attempt == answer:
-                print("Correct")
+                print("\nCorrect!!!\n")
                 # increases score
                 score += 1
             else:
-                print("Wrong")
+                print("\n*Wrong*\n")
             # removes question and answer so it won't be repeated
             if remove_ == 1:
                 day_maori.remove(answer)
@@ -251,8 +255,11 @@ def game_loop(mode_difficulty):
             else:
                 day_maori.remove(question)
                 day_english.remove(answer)
+    # ends timer
     end = time.time()
+    # calculates time taken
     time_ = end - start
+    # tells function what to give to next function/component
     results = [time_, score, scored]
     return results
 
@@ -340,6 +347,5 @@ print("\nMaori Quiz By Rafael Anggawijaya\nThanks to:\nProfessor Samuel Lee "
       "and chief Hongi Hika who created and systematise the written maori "
       "language\nMr Baker for teaching me how to program :)\nMy Dad, My "
       "sister and Yuu my friend for play testing the game.\nAnd to you the "
-      "player who is "
-      "playing this game!\n")
+      "player who is playing this game!\n")
 print(text_formatter("-", "", "-", "Thanks for playing!"))
