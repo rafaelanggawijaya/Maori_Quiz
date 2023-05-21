@@ -54,9 +54,11 @@ def instructions():
           "to maori and maori to english\nEach round asks you 10 questions "
           "no matter what difficulty and it will also time you\nTry to beat "
           "your score and time\nWhen entering numbers use integers(e.g. 1, "
-          "2, 3,) not strings(e.g. one, two, three) and you don't need to "
-          "mac"
-          "\nThat's pretty much it so good luck ")
+          "2, 3,) not strings(e.g. one, two, three)\nRemember: Days are "
+          "Proper nouns so make sure your answer starts with a capital! ("
+          "Both English and Maori)\nThere are no macrons in the answers so "
+          "don't add them to your answers"
+          "\nThat's pretty much it so good luck!")
 
 
 # menu function
